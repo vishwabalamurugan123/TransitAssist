@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TransitAssist</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <h1>TransitAssist</h1>
+        <p>Accessible Transit Assistance Booking</p>
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <!-- Navigation -->
+
+    <div class="tabs">
+
+        <button onclick="showSection('userSection')">
+            User Request
+        </button>
+
+        <button onclick="showSection('staffSection')">
+            Staff Dashboard
+        </button>
+
+    </div>
+
+
+    <!-- ================= USER SECTION ================= -->
+
+    <section id="userSection" class="section">
+
+        <h2>Request Transit Assistance</h2>
+
+        <p class="description">
+            Request assistance ahead of your trip.
+        </p>
+
+
+        <form id="requestForm">
+
+            <label>User</label>
+
+            <select id="userId" required>
+                <option value="">Select User</option>
+            </select>
+
+
+            <label>Pickup Point</label>
+
+            <input
+                    type="text"
+                    id="pickupPoint"
+                    placeholder="Example: Main Gate"
+                    required
+            >
+
+
+            <label>Start Time</label>
+
+            <input
+                    type="datetime-local"
+                    id="startTime"
+                    required
+            >
+
+
+            <label>End Time</label>
+
+            <input
+                    type="datetime-local"
+                    id="endTime"
+                    required
+            >
+
+
+            <label>Assistance Type</label>
+
+            <select id="assistanceType" required>
+
+                <option value="">
+                    Select Assistance
+                </option>
+
+                <option value="Wheelchair Assistance">
+                    Wheelchair Assistance
+                </option>
+
+                <option value="Escort Assistance">
+                    Escort Assistance
+                </option>
+
+                <option value="Shuttle Assistance">
+                    Shuttle Assistance
+                </option>
+
+                <option value="Other Assistance">
+                    Other Assistance
+                </option>
+
+            </select>
+
+
+            <button type="submit" class="primary-btn">
+                Request Assistance
+            </button>
+
+        </form>
+
+
+        <div id="requestMessage"></div>
+
+    </section>
+
+
+    <!-- ================= STAFF SECTION ================= -->
+
+    <section id="staffSection" class="section hidden">
+
+        <h2>Staff Dashboard</h2>
+
+
+        <!-- Add Helper -->
+
+        <div class="card">
+
+            <h3>Add Helper</h3>
+
+            <form id="helperForm">
+
+                <input
+                        type="text"
+                        id="helperName"
+                        placeholder="Helper Name"
+                        required
+                >
+
+                <input
+                        type="text"
+                        id="helperPhone"
+                        placeholder="Phone Number"
+                        required
+                >
+
+                <select id="helperAvailable">
+
+                    <option value="true">
+                        Available
+                    </option>
+
+                    <option value="false">
+                        Not Available
+                    </option>
+
+                </select>
+
+                <button type="submit" class="primary-btn">
+                    Add Helper
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Helpers -->
+
+        <div class="card">
+
+            <h3>Available Helpers</h3>
+
+            <div id="helpersContainer"></div>
+
+        </div>
+
+
+        <!-- Requests -->
+
+        <div class="card">
+
+            <div class="request-header">
+
+                <h3>Transit Requests</h3>
+
+                <button
+                        onclick="loadRequests()"
+                        class="refresh-btn">
+                    Refresh
+                </button>
+
+            </div>
+
+            <div id="requestsContainer"></div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
